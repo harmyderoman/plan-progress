@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 (2026-11-15)
+
+- The plugin has an icon (`.claude-plugin/icon.png`).
+- The pane's tab reads "Plan progress" instead of "Plan".
+- README: screenshots, a "Where it works" section, and VS Code described as it is: the pane docks beside the chat in a wide tab and opens above the prompt in a narrow one.
+
 ## 0.2.0 (2026-11-15)
 
 First public release.

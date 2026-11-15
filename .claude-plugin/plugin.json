@@ -1,6 +1,6 @@
 {
   "name": "plan-progress",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Shows the plan of the task Claude is working on: its steps and a progress bar beside the chat, updated as steps are done",
   "author": { "name": "harmyderoman", "url": "https://github.com/harmyderoman" },
   "homepage": "https://github.com/harmyderoman/plan-progress",
