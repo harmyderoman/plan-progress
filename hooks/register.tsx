@@ -95,7 +95,7 @@ export const register: Register = on => {
     await update($, isBandHidden, () => false)
     const opened = await $.ui.open({ id: PANE, title: PANE_TITLE })
     await update($, isPaneOpen, () => opened.isPlaced)
-    // No pane here (VS Code): the band above the prompt opens its step list instead.
+    // The surface placed no pane: the band above the prompt opens its step list instead.
     if (!opened.isPlaced) await update($, isBandOpen, () => true)
 
     return { text: current ? `${summary(current)}${opened.isPlaced ? '' : ' (every step is listed above the prompt)'}` : 'No plan yet.' }
@@ -147,7 +147,7 @@ export const register: Register = on => {
   })
 
   // Above the prompt: the bar, the count and the step in hand in one line; "Steps" opens every step under it
-  // (VS Code draws no pane beside the chat, so this is where the whole plan is seen there).
+  // (where the surface places no pane, this is where the whole plan is seen).
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
     const current = await read($, plan)
     if (!current || e.props.hasSurvey || (await read($, isBandHidden)) || (await read($, isPaneOpen))) return next(e)

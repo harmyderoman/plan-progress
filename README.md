@@ -1,5 +1,9 @@
 # plan-progress
 
+**Ever wondered what your agent is actually doing? Now you'll always know.**
+
+![The plan pane above the prompt, three of seven steps done](docs/pane-inline.png)
+
 A [Claude Code](https://claude.com/claude-code) mod that shows where Claude is in a task while it works. When Claude starts a task of three or more steps, it lays out the plan, and you watch it move: a progress bar, the step in hand, and every step ticked off as it is done.
 
 ```
@@ -27,7 +31,13 @@ In the desktop app, where `/plugin` does not run: click **+** next to the prompt
 ## What you see
 
 - **Bar above the prompt**: the progress bar, `done/total` and the current step. **Steps** opens the whole list under it (`✓` done, `▶` in progress, `○` ahead), **Less** folds it, **Hide** hides the bar until the next plan.
-- **Plan pane** beside the chat, where the surface docks panes (the terminal's fullscreen layout, the desktop app): the title, the bar and every step. While the pane is shown, the bar above the prompt stays away, since it would show the same. VS Code draws no side pane, so there the bar above the prompt is the view.
+
+  ![The bar above the prompt: the progress bar, 3/7 and the step in hand](docs/band.png)
+
+- **Plan pane**: the title, the bar and every step. It docks beside the chat where there is room for it (the terminal's fullscreen layout, the desktop app, a wide VS Code tab) and otherwise opens above the prompt, as in the picture at the top. While the pane is shown, the bar above the prompt stays away, since it would show the same; close the pane and the bar comes back.
+
+  <img src="docs/pane.png" alt="The plan pane docked beside the chat in VS Code" width="328">
+
 - **`/progress`**: opens the pane, or the step list above the prompt where there is no pane, and prints a one-line summary.
 
 ## How it works
