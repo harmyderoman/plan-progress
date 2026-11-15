@@ -22,3 +22,30 @@ jobs:
         run: claude plugin validate .
       - name: Run the tests on every surface
         run: claude plugin test .
+
+  # On main, once the checks pass: a version in plugin.json with no release yet gets a tag and a GitHub release,
+  # its notes taken from that version's section of CHANGELOG.md. Bump the version and add the section in one commit.
+  release:
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Release the manifest's version if it is new
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(jq -r .version .claude-plugin/plugin.json)
+          tag="v$version"
+          if gh release view "$tag" > /dev/null 2>&1; then
+            echo "$tag is already released."
+            exit 0
+          fi
+          awk -v v="$version" '/^## /{ p = ($0 == "## " v || index($0, "## " v " ") == 1); next } p' CHANGELOG.md > notes.md
+          if ! grep -q '[^[:space:]]' notes.md; then
+            echo "::error::CHANGELOG.md has no section for $version."
+            exit 1
+          fi
+          gh release create "$tag" --target "$GITHUB_SHA" --title "plan-progress $version" --notes-file notes.md
