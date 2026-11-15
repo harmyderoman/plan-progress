@@ -40,6 +40,19 @@ In the desktop app, where `/plugin` does not run: click **+** next to the prompt
 
 - **`/progress`**: opens the pane, or the step list above the prompt where there is no pane, and prints a one-line summary.
 
+## Where it works
+
+Anywhere Claude Code draws a mod's interface. The tests run it on all four of these:
+
+| Surface | What you get |
+| --- | --- |
+| Terminal (`claude`) | The bar above the prompt; the pane beside the chat in the fullscreen layout, above the prompt otherwise. |
+| Desktop app | The pane beside the chat, which can also be minimized to a small widget. |
+| VS Code | The pane beside the chat in a wide tab, above the prompt in a narrow one, and the bar above the prompt. |
+| Claude mobile app | The plan of a Claude Code session the app is attached to. |
+
+It is a Claude Code mod, so it does not appear in the claude.ai chat. Other Claude Code surfaces have not been tested.
+
 ## How it works
 
 The mod gives Claude a `progress` tool (`mcp__plan-progress__progress`) and one line in its system prompt asking it to use the tool for tasks of three or more steps.
