@@ -42,16 +42,13 @@ In the desktop app, where `/plugin` does not run: click **+** next to the prompt
 
 ## Where it works
 
-Anywhere Claude Code draws a mod's interface. The tests run it on all four of these:
-
 | Surface | What you get |
 | --- | --- |
 | Terminal (`claude`) | The bar above the prompt; the pane beside the chat in the fullscreen layout, above the prompt otherwise. |
 | Desktop app | The pane beside the chat, which can also be minimized to a small widget. |
 | VS Code | The pane beside the chat in a wide tab, above the prompt in a narrow one, and the bar above the prompt. |
-| Claude mobile app | The plan of a Claude Code session the app is attached to. |
 
-It is a Claude Code mod, so it does not appear in the claude.ai chat. Other Claude Code surfaces have not been tested.
+It does not run in Claude Code on the web (claude.ai/code) or in the claude.ai chat.
 
 ## How it works
 
