@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # The plugin test kit and validator ship with Claude Code; neither needs a login.
+      - run: npm install -g @anthropic-ai/claude-code@2.1.322
+      - name: Validate the manifest, marketplace and hooks module
+        run: claude plugin validate .
+      - name: Run the tests on every surface
+        run: claude plugin test .

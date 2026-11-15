@@ -1,0 +1,6 @@
+{
+  "name": "plan-progress",
+  "description": "plan-progress: a Claude Code mod that shows the plan of the task in hand as a progress bar beside the chat",
+  "owner": { "name": "harmyderoman", "url": "https://github.com/harmyderoman" },
+  "plugins": [{ "name": "plan-progress", "source": "./" }]
+}

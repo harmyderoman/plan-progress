@@ -1,0 +1,7 @@
+# Written by Claude Code when it loads the mod from this folder
+.claude-plugin/types/
+# Compiled output of older local builds
+hooks/*.js
+node_modules/
+*.log
+.DS_Store
