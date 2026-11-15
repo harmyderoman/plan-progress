@@ -7,6 +7,8 @@ import type { Register } from 'claude-code'
 import { LIMITS, applyReport, bar, counts, mark, sanitize, stepWindow, summary } from './plan'
 
 const PANE = 'plan-progress'
+// The pane's tab title, shown while more than one pane is open.
+const PANE_TITLE = 'Plan progress'
 const TOOL = 'mcp__plan-progress__progress'
 // Change the tag when Plan's fields change: a stored plan of another shape is read as none.
 const plan = atom({ plugin: 'plan-progress', key: 'plan' } as const, null, { shape: 'plan-1' })
@@ -78,7 +80,7 @@ export const register: Register = on => {
     await update($, plan, () => after)
     if (input.steps?.length) {
       await update($, isBandHidden, () => false)
-      const opened = await $.ui.open({ id: PANE, title: 'Plan' })
+      const opened = await $.ui.open({ id: PANE, title: PANE_TITLE })
       await update($, isPaneOpen, () => opened.isPlaced)
     }
     if (!after) {
@@ -91,7 +93,7 @@ export const register: Register = on => {
   on('command.run', { command: 'progress' }, async $ => {
     const current = await read($, plan)
     await update($, isBandHidden, () => false)
-    const opened = await $.ui.open({ id: PANE, title: 'Plan' })
+    const opened = await $.ui.open({ id: PANE, title: PANE_TITLE })
     await update($, isPaneOpen, () => opened.isPlaced)
     // No pane here (VS Code): the band above the prompt opens its step list instead.
     if (!opened.isPlaced) await update($, isBandOpen, () => true)

@@ -7,5 +7,6 @@
   "repository": "https://github.com/harmyderoman/plan-progress",
   "license": "MIT",
   "keywords": ["progress", "plan", "tasks", "pane", "mod"],
+  "icon": "./icon.png",
   "types": "./types/index.d.ts"
 }
